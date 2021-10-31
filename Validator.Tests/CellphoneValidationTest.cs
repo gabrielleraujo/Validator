@@ -21,14 +21,8 @@ namespace Validator.Tests
             string result = validMessage;
 
             //act
-            try
-            {
-                validator.Validate(cellphone);
-            }
-            catch (ArgumentException e)
-            {
-                result = e.Message;
-            }
+            try { validator.Validate(cellphone); }
+            catch (ArgumentException e) { result = e.Message; }
 
             //assert
             Assert.Equal(expectedResult, result);

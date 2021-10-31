@@ -21,14 +21,8 @@
             string result = "Número de telefone válido";
 
             //act
-            try
-            {
-                validacao.ValidarDadosIniciais(initialData);
-            }
-            catch (ArgumentException e)
-            {
-                result = e.Message;
-            }
+            try { validacao.ValidarDadosIniciais(initialData); }
+            catch (ArgumentException e) { result = e.Message; }
 
             //assert
             Console.WriteLine(result);
