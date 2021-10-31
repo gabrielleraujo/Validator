@@ -6,15 +6,15 @@ namespace Validator.Tests
     using Xunit;
 
 
-    public class CelularValidationTest
+    public class CellphoneValidationTest
     {
         const string validMessage = "Número de celular válido";
         const string invalidMessage = "Número de celular inválido";
 
-        private void Test(string expectedResult, string telefone)
+        private void Test(string expectedResult, string cellphone)
         {
             //arrange
-            var logger = MyLoggerFactory.Create<CelularValidationTest>();
+            var logger = MyLoggerFactory.Create<CellphoneValidationTest>();
            
             ICellphoneValidation validator = new CellphoneValidation(logger);
 
@@ -23,7 +23,7 @@ namespace Validator.Tests
             //act
             try
             {
-                validator.Validate(telefone);
+                validator.Validate(cellphone);
             }
             catch (ArgumentException e)
             {
@@ -42,9 +42,9 @@ namespace Validator.Tests
         [InlineData(invalidMessage, "(21) 9900-0002")]
         [InlineData(invalidMessage, "21 79900-8070")]
         [InlineData(invalidMessage, "(88) 00000-0000")]
-        public void ValidateReturnsInvalidWhenPhoneNumberIsInvalid(string resultadoEsperado, string telefone)
+        public void ValidateReturnsInvalidWhenPhoneNumberIsInvalid(string expectedResult, string cellphone)
         {
-            Test(resultadoEsperado, telefone);
+            Test(expectedResult, cellphone);
         }
 
 
@@ -54,9 +54,9 @@ namespace Validator.Tests
         [InlineData(validMessage, "21971573847")]
         [InlineData(validMessage, "8297845-8070")]
         [InlineData(validMessage, "12 7157-3847")]
-        public void ValidateReturnsValidWhenPhoneNumberIsValid(string resultadoEsperado, string telefone)
+        public void ValidateReturnsValidWhenPhoneNumberIsValid(string expectedResult, string cellphone)
         {
-            Test(resultadoEsperado, telefone);
+            Test(expectedResult, cellphone);
         }
     }
 }
