@@ -13,24 +13,25 @@
             //arrange
             var logger = MyLoggerFactory.Create<Program>();
 
-            ICellphoneValidation validador = new CellphoneValidation(logger);
-            var validacao = new InitialDataValidation(validador);
+            ICellphoneValidation cellphoneValidator = new CellphoneValidation(logger);
+            var validacao = new InitialDataValidation(cellphoneValidator);
 
-            string telefone = "21 99938-8070";
-            var dadosIniciais = new InitialData(telefone);
-            string resultado = "Número de telefone válido";
+            string cellphone = "21 99938-8070";
+            var initialData = new InitialData(cellphone);
+            string result = "Número de telefone válido";
 
             //act
             try
             {
-                validacao.ValidarDadosIniciais(dadosIniciais);
+                validacao.ValidarDadosIniciais(initialData);
             }
             catch (ArgumentException e)
             {
-                resultado = e.Message;
+                result = e.Message;
             }
 
             //assert
+            Console.WriteLine(result);
             Console.ReadLine();
         }
     }
